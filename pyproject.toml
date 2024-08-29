@@ -64,8 +64,8 @@ core = "gsuid_core/core.py"
 
 [[tool.poetry.source]]
 name = "mirrors"
-url = "https://mirrors.bfsu.edu.cn/pypi/web/simple/"
-priority = "default"
+url = "https://mirrors.aliyun.com/pypi/simple/"
+priority = "primary"
 
 [build-system]
 requires = ["poetry-core"]

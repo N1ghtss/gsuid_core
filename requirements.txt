@@ -1,4 +1,4 @@
---index-url https://mirrors.bfsu.edu.cn/pypi/web/simple
+--index-url https://mirrors.aliyun.com/pypi/simple/
 
 aioboto3==12.4.0 ; python_full_version >= "3.8.1" and python_version < "4.0"
 aiobotocore[boto3]==2.12.3 ; python_full_version >= "3.8.1" and python_version < "4.0"

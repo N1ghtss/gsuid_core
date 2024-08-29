@@ -20,9 +20,7 @@ RUN apt-get update -y \
 
 ADD ./ /app/
 
-RUN poetry source add --priority=primary mirrors https://mirrors.aliyun.com/pypi/simple/ \
-    && poetry lock --no-update \
-    && poetry install \
+RUN poetry install \
     && rm -rf /app/*
 
 
