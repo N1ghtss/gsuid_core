@@ -1,11 +1,21 @@
 services:
-  gsuid-core:
-    build: .
+  gsuidcore:
+    image: gsuidcore:latest
     container_name: gsuidcore
     restart: always
     environment:
       - TZ=Asia/Shanghai
-    ports:
-      - 8765:8765
+    # ports:
+    #   - 8765:8765
     volumes:
-      - ${PWD}:/app
+      - ./:/app/
+    # stdin_open: true
+    command: [ "sh", "-c", "poetry run core " ]
+    networks:
+      default:
+        ipv4_address: 192.168.100.30
+
+networks:
+  default:
+    external: true
+    name: app

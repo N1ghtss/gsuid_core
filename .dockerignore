@@ -1,2 +1,5 @@
 __pycache__
-./gsuid-core/data/*
+gsuid-core/data/*
+.idea
+.vscode
+.venv
