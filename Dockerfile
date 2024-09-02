@@ -6,7 +6,9 @@ WORKDIR /app
 
 ENV PATH="${PATH}:/root/.local/bin"
 
-RUN sed -i 's|deb.debian.org|mirrors.tuna.tsinghua.edu.cn|g' /etc/apt/sources.list.d/debian.sources
+RUN sed -i 's|deb.debian.org|mirrors.tuna.tsinghua.edu.cn|g' /etc/apt/sources.list.d/debian.sources  \
+    && pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/ \
+    && pip config set install.trusted-host https://mirrors.aliyun.com/pypi/simple/
 
 RUN apt-get update -y \
     && apt-get upgrade -y \
@@ -14,14 +16,14 @@ RUN apt-get update -y \
     && apt-get autoremove \
     && apt-get clean \
     && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
-    && pip install --no-cache-dir --upgrade pip -i https://mirrors.aliyun.com/pypi/simple/ \
-    && pip install poetry -i https://mirrors.aliyun.com/pypi/simple/
+    && pip install --no-cache-dir --upgrade pip \
+    && pip install poetry
 # && pdm config pypi.url https://mirrors.aliyun.com/pypi/simple/
 
 ADD ./ /app/
 
 RUN poetry install \
-    && rm -rf /app/*
+    && rm -rf /app/{*,.*}
 
 
 # RUN rm -rf /app/*

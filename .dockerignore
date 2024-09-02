@@ -3,3 +3,4 @@ gsuid-core/data/*
 .idea
 .vscode
 .venv
+.git
