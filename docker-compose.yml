@@ -1,10 +1,9 @@
 services:
-  gsuidcore:
-    image: gsuidcore:latest
-    container_name: gsuidcore
-    restart: always
-    environment:
-      - TZ=Asia/Shanghai
+  gsuid-core:
+    build: .
+    container_name: gsuid-core
+    restart: unless-stopped
+    image: gsuid-core:latest
     # ports:
     #   - 8765:8765
     volumes:

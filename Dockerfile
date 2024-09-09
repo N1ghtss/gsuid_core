@@ -1,12 +1,12 @@
 FROM python:3.11.9-slim
 
-ENV POETRY_PYPI_MIRROR_URL=https://mirrors.aliyun.com/pypi/simple/
-
 WORKDIR /app
 
 ENV PATH="${PATH}:/root/.local/bin"
 
-RUN sed -i 's|deb.debian.org|mirrors.tuna.tsinghua.edu.cn|g' /etc/apt/sources.list.d/debian.sources
+ENV TZ=Asia/Shanghai
+
+RUN sed -i 's|deb.debian.org|mirrors.aliyun.com|g' /etc/apt/sources.list.d/debian.sources
 
 RUN pip config set global.index-url 'https://mirrors.aliyun.com/pypi/simple/' \
     && pip config set global.timeout '120' \
@@ -28,9 +28,3 @@ RUN poetry install \
     && rm -rf /app/{*,.*}
 
 
-# RUN rm -rf /app/*
-
-# RUN pdm config python.use_venv false \
-#     && pdm install \
-#     && pdm run python -m ensurepip \
-#     && rm -rf /app/*
