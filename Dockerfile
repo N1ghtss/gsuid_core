@@ -6,9 +6,11 @@ WORKDIR /app
 
 ENV PATH="${PATH}:/root/.local/bin"
 
-RUN sed -i 's|deb.debian.org|mirrors.tuna.tsinghua.edu.cn|g' /etc/apt/sources.list.d/debian.sources  \
-    && pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/ \
-    && pip config set install.trusted-host https://mirrors.aliyun.com/pypi/simple/
+RUN sed -i 's|deb.debian.org|mirrors.tuna.tsinghua.edu.cn|g' /etc/apt/sources.list.d/debian.sources
+
+RUN pip config set global.index-url 'https://mirrors.aliyun.com/pypi/simple/' \
+    && pip config set global.timeout '120' \
+    && pip config set global.trusted-host 'mirrors.aliyun.com'
 
 RUN apt-get update -y \
     && apt-get upgrade -y \
