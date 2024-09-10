@@ -7,11 +7,12 @@ services:
     # ports:
     #   - 8765:8765
     volumes:
-      - ./data:/app/data
-      - ./gsuid_core:/app/gsuid_core
-      - ./poetry.lock:/app/poetry.lock
-      - ./pyproject.toml:/app/pyproject.toml
-      - ./requirements.txt:/app/requirements.txt
+      - ./:/app
+#      - ./data:/app/data
+#      - ./gsuid_core:/app/gsuid_core
+#      - ./poetry.lock:/app/poetry.lock
+#      - ./pyproject.toml:/app/pyproject.toml
+#      - ./requirements.txt:/app/requirements.txt
       # stdin_open: true
     command: [ "sh", "-c", "poetry run core " ]
     networks:
